@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Product as ProductTye } from "../actions/products";
 import { addToCart } from "../actions/cart";
-import AddToCartButton from "./AddToCartButton";
 import { formatPrice } from "../lib/utils/formatPrice";
 import Form from "next/form";
+import AddToCartButton from "./AddToCartButton";
 
 function Product({ product }: { product: ProductTye }) {
   return (
