@@ -3,7 +3,7 @@ import { Product as ProductTye } from "../actions/products";
 import { addToCart } from "../actions/cart";
 import { formatPrice } from "../lib/utils/formatPrice";
 import Form from "next/form";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "./AddProductToCart";
 
 function Product({ product }: { product: ProductTye }) {
   return (
