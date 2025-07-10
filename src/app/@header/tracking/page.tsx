@@ -11,11 +11,12 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
-import { getCart } from "../../../actions/cart";
+
 import SearchInput from "../SearchInput";
+import { cartLenght } from "../../../actions/cart";
 
 async function page() {
-  const cart = await getCart();
+  const cart = await cartLenght();
   return (
     <div className="amazon-header">
       <div className="amazon-header-left-section">
@@ -55,7 +56,10 @@ async function page() {
             height={40}
             src="/images/icons/cart-icon.png"
           />
-          <div className="cart-quantity js-cart-quantity"> {cart.length} </div>
+          <div className="cart-quantity js-cart-quantity">
+            {" "}
+            {cart.length !== 0 && cart.length}{" "}
+          </div>
           <div className="cart-text">Cart</div>
         </Link>
       </div>

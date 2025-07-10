@@ -175,3 +175,23 @@ export async function clearCart(userId: string) {
     console.error("Failed to clear cart:", error);
   }
 }
+
+export async function cartLenght() {
+  const user = await currentUser();
+  if (!user) {
+    return [];
+  }
+  const { databases } = await createAdminClient();
+  try {
+    const { documents }: { documents: cartType[] } =
+      await databases.listDocuments<cartType>(
+        appwrite.databaseId,
+        appwrite.cartCollectionId,
+        [Query.equal("user_id", user.id)]
+      );
+    return documents;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}

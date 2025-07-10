@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { getCart } from "../../actions/cart";
+import { cartLenght } from "../../actions/cart";
 import "../../styles/shared/amazon-header.css";
 import SearchInput from "./SearchInput";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@clerk/nextjs";
 
 async function page() {
-  const cart = await getCart();
+  const cart = await cartLenght();
   return (
     <div className="amazon-header">
       <div className="amazon-header-left-section">
@@ -53,7 +53,10 @@ async function page() {
             height={40}
             src="/images/icons/cart-icon.png"
           />
-          <div className="cart-quantity js-cart-quantity"> {cart.length} </div>
+          <div className="cart-quantity js-cart-quantity">
+            {" "}
+            {cart.length !== 0 && cart.length}{" "}
+          </div>
           <div className="cart-text">Cart</div>
         </Link>
       </div>
