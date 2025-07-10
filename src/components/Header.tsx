@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { cartLenght } from "../../actions/cart";
-import "../../styles/shared/amazon-header.css";
-import SearchInput from "./SearchInput";
+import "../styles/shared/amazon-header.css";
 import {
   SignedIn,
   SignedOut,
@@ -11,8 +9,10 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
+import { cartLenght } from "../actions/cart";
+import SearchInput from "./SearchInput";
 
-async function page() {
+async function Header() {
   const cart = await cartLenght();
   return (
     <div className="amazon-header">
@@ -77,4 +77,4 @@ async function page() {
   );
 }
 
-export default page;
+export default Header;

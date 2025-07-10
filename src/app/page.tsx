@@ -3,6 +3,7 @@ import React from "react";
 import { getProducts } from "../actions/products";
 import Product from "../components/Product";
 import "../styles/pages/amazon.css";
+import Header from "../components/Header";
 
 export const metadata: Metadata = {
   title: "Amazon Project",
@@ -17,6 +18,7 @@ async function page({
   const products = await getProducts(query && query);
   return (
     <>
+      <Header />
       <div className="home-main">
         <div className="products-grid">
           {products.length > 0 &&

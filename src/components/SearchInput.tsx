@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getProducts } from "../../actions/products";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { getProducts } from "../actions/products";
 
 function SearchInput() {
   const [input, setInput] = useState("");

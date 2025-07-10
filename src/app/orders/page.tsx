@@ -9,20 +9,24 @@ import { formatPrice } from "../../lib/utils/formatPrice";
 import "../../styles/pages/orders.css";
 import { addToCart } from "../../actions/cart";
 import Link from "next/link";
+import Header from "../../components/Header";
 
 async function OrderPage() {
   const orders = await allOrdersBatch();
   return (
-    <div className="order-main">
-      <div className="page-title">Your Orders</div>
-      <div className="orders-grid js-orders-grid">
-        <div className="order-container">
-          {orders.map((order) => (
-            <Order order={order} key={order.$id} />
-          ))}
+    <>
+      <Header />
+      <div className="order-main">
+        <div className="page-title">Your Orders</div>
+        <div className="orders-grid js-orders-grid">
+          <div className="order-container">
+            {orders.map((order) => (
+              <Order order={order} key={order.$id} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

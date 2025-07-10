@@ -1,4 +1,5 @@
 "use client";
+import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
@@ -7,9 +8,9 @@ function AddToCartButton() {
   const { pending } = useFormStatus();
   const addtoCartDiv = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
-
+  const { user } = useUser();
   useEffect(() => {
-    if (!pending || !addtoCartDiv.current) return;
+    if (!pending || !addtoCartDiv.current || !user) return;
 
     addtoCartDiv.current.style.opacity = "1";
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -17,7 +18,8 @@ function AddToCartButton() {
     timeoutRef.current = window.setTimeout(() => {
       addtoCartDiv.current!.style.opacity = "0";
     }, 1500);
-  }, [pending]);
+    return () => {};
+  }, [pending, user]);
   return (
     <>
       <div className="added-to-cart" ref={addtoCartDiv}>

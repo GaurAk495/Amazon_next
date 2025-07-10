@@ -12,7 +12,7 @@ import { redirect } from "next/navigation";
 export async function addToCart(productId: string, formdata: FormData) {
   const user = await currentUser();
   if (!user) {
-    redirect("/sign-in");
+    return redirect("/sign-in");
   }
   const qty = Number(formdata.get("quantity")) || 1;
 
@@ -71,7 +71,7 @@ export type cartType = {
 export async function getCart() {
   const user = await currentUser();
   if (!user) {
-    redirect("/sign-in");
+    return redirect("/sign-in");
   }
   const { databases } = await createAdminClient();
   try {

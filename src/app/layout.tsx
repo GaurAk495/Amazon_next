@@ -15,18 +15,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  header,
 }: Readonly<{
   children: React.ReactNode;
-  header: React.ReactNode;
 }>) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${roboto.className} antialiased`}>
-          {header}
-          {children}
-        </body>
+        <body className={`${roboto.className} antialiased`}>{children}</body>
       </html>
     </ClerkProvider>
   );

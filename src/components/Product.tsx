@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { Product as ProductTye } from "../actions/products";
 import { addToCart } from "../actions/cart";
-import AddToCartButton from "./addToCartButton";
+import AddToCartButton from "./AddToCartButton";
 import { formatPrice } from "../lib/utils/formatPrice";
+import Form from "next/form";
 
 function Product({ product }: { product: ProductTye }) {
   return (
-    <form
+    <Form
       action={addToCart.bind(null, product.$id)}
       className="product-container"
     >
@@ -54,7 +55,7 @@ function Product({ product }: { product: ProductTye }) {
       {product.sizeChartLink || ""}
       <div className="product-spacer"></div>
       <AddToCartButton />
-    </form>
+    </Form>
   );
 }
 
