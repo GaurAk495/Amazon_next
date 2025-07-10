@@ -53,10 +53,7 @@ async function Header() {
             height={40}
             src="/images/icons/cart-icon.png"
           />
-          <div className="cart-quantity js-cart-quantity">
-            {" "}
-            {cart.length !== 0 && cart.length}{" "}
-          </div>
+          <div className="cart-quantity js-cart-quantity">{cart.length}</div>
           <div className="cart-text">Cart</div>
         </Link>
       </div>
